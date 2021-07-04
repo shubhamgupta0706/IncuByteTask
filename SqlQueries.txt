@@ -1,0 +1,18 @@
+/*Query to find unique country names from staging table to identify how many customer tables need to be created*/
+select distinct country 
+from custmor_staging  --customer_staging is a staging table created after ETL process
+
+/*Create table query for statewise customers*/
+
+create table customer_india(
+cust_name varchar(255) not null,
+cust_id varchar(18) not null primary key,
+open_dt date not null,
+consult_dt date,
+vac_id char(5),
+dr_name varchar(255),
+state char(5),
+post_code integer check(post_code between 0 and 99999),
+dt_dob date,
+is_active char(1)
+)
